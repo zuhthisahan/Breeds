@@ -6,27 +6,7 @@ const pool = require('./db');
 app.use(express.json());
 
 
-//Routes
 
-app.get("/breeds", async(req, res)=>{
-    try {
-        const breeds = await pool.query("SELECT * FROM breeds" );
-        res(breeds)
-        console.log(typeof(breeds))
-    } catch (error) {
-        
-    }
-});
-
-//Add Data
-app.post("/ss", async(req, res) =>{
-    try {
-        const {name} = req.body;
-        const newSs = await pool.query("INSERT INTO ss (name) VALUES ($1) RETURNING *",[name])
-    } catch (error) {
-        
-    }
-});
 
 app.get("/names", async (req, res) => {
     try {
